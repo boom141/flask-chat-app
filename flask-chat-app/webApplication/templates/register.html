@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}register | Flask-App{% endblock %}
+
+
+{% block content %}
+
+    <section>
+        <form method="post" class="d-flex flex-column justify-content-center" style="margin: 4rem 30rem;">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="text" name="username" id="form2Example1" class="form-control" />
+                <label class="form-label" for="form2Example1">Email address</label>
+            </div>
+          
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" name="password" id="form2Example2" class="form-control" />
+              <label class="form-label" for="form2Example2">Password</label>
+            </div>
+          
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+            
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category == "error" %}
+                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                                <div>
+                                    {{message}}
+                                </div>
+                            </div>
+                        {% else%}
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                <div>
+                                    {{message}}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>Already a member? <a href="{{url_for('.login')}}">sign-in</a></p>
+            </div>
+          </form>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Chat-room | Flask-App{% endblock %}
+
+
+{% block content %}
+
+    <section class="m-5 border border-rd"  style="background-color: rgba(209, 207, 207, 0.518);">
+        <div class="container"> 
+            <div class="row">
+                <div class="col-4 p-3 border-r-gr">
+                    <div class="input-group mb-3">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button type="button" class="btn btn-outline-primary">search</button>
+                    </div>
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action border-none mb-3 shadow-df cursor">
+                            <div class="global-chat d-flex flex-column justify-content-center" style="max-height: 10rem; overflow: hidden;">
+                                <strong>GLOBAL~CHAT</strong>
+                                <p class="text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit deserunt laborum ducimus, natus cum nulla vero et, tenetur quod, itaque aliquam doloribus reiciendis obcaecati reprehenderit cumque libero accusantium non sint.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 p-3  d-flex flex-column justify-content-start " style="height: 30rem;">
+                    <div class="messages-content list-group  overflow-y-auto" style="height: 30rem">
+                    </div>
+                    <div class="message-input d-flex flex-row">
+                        <input class="form-control m-2" type="text">
+                        <button class="send-btn btn btn-primary m-2">SEND</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% block script %} <script src="{{url_for('static', filename='javascript/chat_events.js')}}"></script> {% endblock %}
+
+{% endblock %}
